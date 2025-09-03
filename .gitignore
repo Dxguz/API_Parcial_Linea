@@ -15,7 +15,7 @@ staticfiles/
 
 # Configuración sensible
 *.env
-.api_project/settings.py
+api_project/settings.py
 
 # Archivos de IDE
 .vscode/
