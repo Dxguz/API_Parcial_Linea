@@ -5,13 +5,13 @@ from .models import Autor, Editorial, Libro, Miembro, Prestamo
 class AutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Autor
-        fields = "_all_"
+        fields = "__all__"
 
 
 class EditorialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Editorial
-        fields = "_all_"
+        fields = "__all__"
 
 
 class LibroSerializer(serializers.ModelSerializer):
@@ -21,13 +21,13 @@ class LibroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Libro
-        fields = "_all_"
+        fields = "__all__"
 
 
 class MiembroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Miembro
-        fields = "_all_"
+        fields = "__all__"
 
 
 class PrestamoSerializer(serializers.ModelSerializer):
@@ -37,4 +37,4 @@ class PrestamoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Prestamo
-        fields = "_all_"
+        fields = "__all__"
