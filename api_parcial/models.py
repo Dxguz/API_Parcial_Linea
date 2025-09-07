@@ -22,8 +22,8 @@ class Autor(models.Model):
 class Editorial(models.Model):
     id_editorial = models.AutoField(primary_key=True, editable=False, db_column='T002IdEditorial')
     nombre = models.CharField(max_length=100, db_column='T002Nombre')
-    direccion = models.CharField(max_length=100, db_column='T001Direccion')
-    telefono = models.CharField(max_length=100, db_column='T001Telefono')
+    direccion = models.CharField(max_length=100, db_column='T002Direccion')
+    telefono = models.CharField(max_length=100, db_column='T002Telefono')
 
     def __str__(self):
         return f"{self.nombre} {self.direccion} {self.telefono}"
@@ -38,13 +38,13 @@ class Libro(models.Model):
     id_libro = models.AutoField(primary_key=True, editable=False, db_column='T003IdLibro')
     titulo = models.CharField(max_length=100, db_column='T003Titulo')
     resumen = models.TextField(db_column='T003Resumen')
-    ISBN = models.CharField(max_length=100, db_column='T003ISBN')
-    fecha_public = models.DateField(db_column='T003FechaPublic')
+    isbn = models.CharField(max_length=100, db_column='T003ISBN', unique=True)
+    anio_publicacion = models.PositiveIntegerField(db_column='T003AnioPublic', default=0) #Para guardar solo el año y no la fecha completa
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, related_name='libros', db_column='T003AutorId')
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE, related_name='libros', db_column='T003EditorialId')
     
     def __str__(self):
-        return f"{self.titulo} {self.ISBN} {self.autor}"
+        return f"{self.titulo} - {self.isbn} - {self.autor}"
 
     class Meta:
         db_table = 'T003Libro'
